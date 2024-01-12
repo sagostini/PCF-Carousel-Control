@@ -45,7 +45,7 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 	private _showSlideAnimation: boolean;
 
 	private _supportedMimeTypes: string[] = ["image/jpeg", "image/png", "image/svg+xml"];
-	private _supportedExtensions : string[] = [".jpg", ".jpeg", ".png", ".svg", ".gif"];
+	private _supportedExtensions: string[] = [".jpg", ".jpeg", ".png", ".svg", ".gif"];
 
 	constructor() {
 
@@ -98,7 +98,7 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 		carousel.appendChild(slides);
 		if (this._showArrows) { this.AddNavigation(); }
 		this.GetFiles(this.entityReference).then(result => this.BuildCarousel(result));
-		
+
 	}
 
 
@@ -106,8 +106,8 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 	 * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width, offline status, control metadata values such as label, visible, etc.
 	 * @param context The entire property bag available to control via Context Object; It contains values as set up by the customizer mapped to names defined in the manifest, as well as utility functions
 	 */
-	public updateView(context: ComponentFramework.Context<IInputs>): void {		
-		
+	public updateView(context: ComponentFramework.Context<IInputs>): void {
+
 	}
 
 	/** 
@@ -135,7 +135,9 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 	}
 
 	private AddSlide(index: number, file: AttachedFile): void {
-		let source = 'data:' + file.mimeType + ';base64, ' + file.fileContent;
+		//let source = 'data:' + file.mimeType + ';base64, ' + file.fileContent;
+		let source = file.fileContent;
+
 		let carouselItem = document.createElement("div");
 		carouselItem.classList.add("carousel-item");
 		if (index == 0) { carouselItem.classList.add("active"); }
@@ -147,14 +149,14 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 
 		carouselItem.appendChild(imgElement);
 
-		if(this._showFilename){
+		if (this._showFilename) {
 			let imageCaption = document.createElement("div");
 			imageCaption.classList.add("carousel-caption");
-	
+
 			let fileName = document.createElement("h3");
 			fileName.textContent = file.fileName;
 			fileName.onclick = (e => { this.DownloadFile(file); });
-	
+
 			imageCaption.appendChild(fileName);
 			carouselItem.appendChild(imageCaption);
 		}
@@ -188,16 +190,53 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 	}
 
 	private async GetFiles(ref: EntityReference): Promise<AttachedFile[]> {
-		let attachmentType = ref.typeName == "email" ? "activitymimeattachment" : "annotation";
-		let fetchXml =
-			"<fetch>" +
-				"<entity name='" + attachmentType + "'>" +
-					"<filter>" +
-						"<condition attribute='objectid' operator='eq' value='" + ref.id + "'/>" +
-						"<condition attribute='filesize' operator='gt' value='0'/>" +
-					"</filter>" +
-				"</entity>" +
-			"</fetch>";
+		/*let attachmentType = ref.typeName == "email" ? "activitymimeattachment" : "annotation";
+				let fetchXml =
+					"<fetch>" +
+						"<entity name='" + attachmentType + "'>" +
+							"<filter>" +
+								"<condition attribute='objectid' operator='eq' value='" + ref.id + "'/>" +
+								"<condition attribute='filesize' operator='gt' value='0'/>" +
+							"</filter>" +
+						"</entity>" +
+					"</fetch>";
+		*/
+		let attachmentType = "sharepointdocument";
+		var fetchData = {
+			"isrecursivefetch": "1",
+			"recordId": ref.id
+		};
+		var fetchXml = [
+			"<fetch distinct='false' mapping='logical' returntotalrecordcount='true' page='1' count='50' no-lock='false'>",
+			"  <entity name='sharepointdocument'>",
+			"    <attribute name='documentid'/>",
+			"    <attribute name='fullname'/>",
+			"    <attribute name='relativelocation'/>",
+			"    <attribute name='sharepointcreatedon'/>",
+			"    <attribute name='filetype'/>",
+			"    <attribute name='absoluteurl'/>",
+			"    <attribute name='modified'/>",
+			"    <attribute name='sharepointmodifiedby'/>",
+			"    <attribute name='title'/>",
+			"    <attribute name='readurl'/>",
+			"    <attribute name='editurl'/>",
+			"    <attribute name='author'/>",
+			"    <attribute name='filesize'/>",
+			"    <attribute name='sharepointdocumentid'/>",
+			"    <filter>",
+			"      <condition attribute='isrecursivefetch' operator='eq' value='", fetchData.isrecursivefetch/*1*/, "'/>",
+			"    </filter>",
+			"    <attribute name='author'/>",
+			"    <attribute name='absoluteurl'/>",
+			"    <order attribute='relativelocation' descending='false'/>",
+			"    <link-entity name='new_issue' from='new_issueid' to='regardingobjectid' alias='bb'>",
+			"      <filter type='and'>",
+			"        <condition attribute='new_issueid' operator='eq' uitype='new_issue' value='", fetchData.recordId, "'/>",
+			"      </filter>",
+			"    </link-entity>",
+			"  </entity>",
+			"</fetch>"
+		].join("");
 
 		let query = '?fetchXml=' + encodeURIComponent(fetchXml);
 
@@ -206,14 +245,19 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 			let items = [];
 			for (let i = 0; i < result.entities.length; i++) {
 				let record = result.entities[i];
-				let fileName = <string>record["filename"];
+				/*let fileName = <string>record["filename"];
 				let mimeType = <string>record["mimetype"];
 				let content = <string>record["body"] || <string>record["documentbody"];
 				let fileSize = <number>record["filesize"];
+				*/
 
+				let fileName = <string>record["fullname"];
+				let mimeType = ""//<string>record["mimetype"];
+				let content = <string>record["absoluteurl"];
+				let fileSize = <number>record["filesize"];
 				const ext = fileName.substr(fileName.lastIndexOf('.')).toLowerCase();
 
-				if (!this._supportedMimeTypes.includes(mimeType) && !this._supportedExtensions.includes(ext)) { continue; }
+				//if (!this._supportedMimeTypes.includes(mimeType) && !this._supportedExtensions.includes(ext)) { continue; }
 
 				let file = new AttachedFile(fileName, mimeType, content, fileSize);
 				items.push(file);
@@ -256,7 +300,7 @@ export class CarouselControl implements ComponentFramework.StandardControl<IInpu
 		for (let index = 0; index < files.length; index++) {
 			const file = files[index];
 
-			if (this._showIndicators) { this.AddIndicator(index);}
+			if (this._showIndicators) { this.AddIndicator(index); }
 			this.AddSlide(index, file);
 		}
 

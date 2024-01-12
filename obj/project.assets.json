@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.6.2": {
-      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
+      "Microsoft.PowerApps.MSBuild.Pcf/1.29.6": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -11,7 +11,7 @@
       }
     },
     ".NETFramework,Version=v4.6.2/win": {
-      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
+      "Microsoft.PowerApps.MSBuild.Pcf/1.29.6": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -20,7 +20,7 @@
       }
     },
     ".NETFramework,Version=v4.6.2/win-x64": {
-      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
+      "Microsoft.PowerApps.MSBuild.Pcf/1.29.6": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -29,7 +29,7 @@
       }
     },
     ".NETFramework,Version=v4.6.2/win-x86": {
-      "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
+      "Microsoft.PowerApps.MSBuild.Pcf/1.29.6": {
         "type": "package",
         "build": {
           "build/Microsoft.PowerApps.MSBuild.Pcf.props": {},
@@ -39,10 +39,10 @@
     }
   },
   "libraries": {
-    "Microsoft.PowerApps.MSBuild.Pcf/1.2.6": {
-      "sha512": "SSNU29umx3MZJ47LyD+ybbaO0QhkUnywSvIuqllK2v9iv2lKXy4+DAZySSyqmZl3s86tIW1NJtWqQEZ0bYdcYg==",
+    "Microsoft.PowerApps.MSBuild.Pcf/1.29.6": {
+      "sha512": "wLzXk6msjI/Y1eNEeqAB5nknTcKUpzAFTPl13xrhun3zbnpVf/n2G4YvenM22Uq165gHOaoBTihM/ifzFjpQpg==",
       "type": "package",
-      "path": "microsoft.powerapps.msbuild.pcf/1.2.6",
+      "path": "microsoft.powerapps.msbuild.pcf/1.29.6",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -50,8 +50,73 @@
         "LICENSE.txt",
         "build/Microsoft.PowerApps.MSBuild.Pcf.props",
         "build/Microsoft.PowerApps.MSBuild.Pcf.targets",
-        "microsoft.powerapps.msbuild.pcf.1.2.6.nupkg.sha512",
-        "microsoft.powerapps.msbuild.pcf.nuspec"
+        "microsoft.powerapps.msbuild.pcf.1.29.6.nupkg.sha512",
+        "microsoft.powerapps.msbuild.pcf.nuspec",
+        "tasks/Microsoft.PowerApps.MSBuild.Pcf.tasks",
+        "tasks/net472/Microsoft.PowerPlatform.MSBuild.Telemetry.Tasks.dll",
+        "tasks/net472/Microsoft.PowerPlatform.MSBuild.Telemetry.Tasks.pdb",
+        "tasks/net472/Microsoft.PowerPlatform.MSBuild.Telemetry.Tasks.tasks",
+        "tasks/net472/Newtonsoft.Json.dll",
+        "tasks/net472/System.Drawing.Common.dll",
+        "tasks/net472/ppbtTelemetryRecorder/Microsoft.ApplicationInsights.dll",
+        "tasks/net472/ppbtTelemetryRecorder/Microsoft.Bcl.AsyncInterfaces.dll",
+        "tasks/net472/ppbtTelemetryRecorder/Microsoft.PowerPlatform.Tooling.BatchedTelemetry.dll",
+        "tasks/net472/ppbtTelemetryRecorder/System.Buffers.dll",
+        "tasks/net472/ppbtTelemetryRecorder/System.Diagnostics.DiagnosticSource.dll",
+        "tasks/net472/ppbtTelemetryRecorder/System.Memory.dll",
+        "tasks/net472/ppbtTelemetryRecorder/System.Numerics.Vectors.dll",
+        "tasks/net472/ppbtTelemetryRecorder/System.Runtime.CompilerServices.Unsafe.dll",
+        "tasks/net472/ppbtTelemetryRecorder/System.Text.Encodings.Web.dll",
+        "tasks/net472/ppbtTelemetryRecorder/System.Text.Json.dll",
+        "tasks/net472/ppbtTelemetryRecorder/System.Threading.Tasks.Extensions.dll",
+        "tasks/net472/ppbtTelemetryRecorder/System.ValueTuple.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/Microsoft.ApplicationInsights.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/Microsoft.Bcl.AsyncInterfaces.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/Microsoft.PowerPlatform.Tooling.BatchedTelemetry.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/Microsoft.PowerPlatform.Tooling.BatchedTelemetry.xml",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/System.Buffers.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/System.Diagnostics.DiagnosticSource.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/System.Memory.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/System.Numerics.Vectors.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/System.Runtime.CompilerServices.Unsafe.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/System.Text.Encodings.Web.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/System.Text.Json.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/System.Threading.Tasks.Extensions.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/System.ValueTuple.dll",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/pacTelemetryUpload.exe",
+        "tasks/net472/ppbtTelemetryRecorder/bt-uploader/pacTelemetryUpload.exe.config",
+        "tasks/net472/ppbtTelemetryRecorder/ppbtTelemetryRecorder.exe",
+        "tasks/net472/ppbtTelemetryRecorder/ppbtTelemetryRecorder.exe.config",
+        "tasks/net472/ppbtTelemetryRecorder/ppbtTelemetryRecorder.pdb",
+        "tasks/net6.0/Microsoft.PowerPlatform.MSBuild.Telemetry.Tasks.deps.json",
+        "tasks/net6.0/Microsoft.PowerPlatform.MSBuild.Telemetry.Tasks.dll",
+        "tasks/net6.0/Microsoft.PowerPlatform.MSBuild.Telemetry.Tasks.pdb",
+        "tasks/net6.0/Microsoft.PowerPlatform.MSBuild.Telemetry.Tasks.tasks",
+        "tasks/net6.0/Microsoft.Win32.SystemEvents.dll",
+        "tasks/net6.0/Newtonsoft.Json.dll",
+        "tasks/net6.0/System.Drawing.Common.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/Microsoft.ApplicationInsights.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/Microsoft.PowerPlatform.Tooling.BatchedTelemetry.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/System.Text.Encodings.Web.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/System.Text.Json.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/bt-uploader/Microsoft.ApplicationInsights.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/bt-uploader/Microsoft.PowerPlatform.Tooling.BatchedTelemetry.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/bt-uploader/Microsoft.PowerPlatform.Tooling.BatchedTelemetry.xml",
+        "tasks/net6.0/ppbtTelemetryRecorder/bt-uploader/System.Text.Encodings.Web.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/bt-uploader/System.Text.Json.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/bt-uploader/pacTelemetryUpload.deps.json",
+        "tasks/net6.0/ppbtTelemetryRecorder/bt-uploader/pacTelemetryUpload.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/bt-uploader/pacTelemetryUpload.dll.config",
+        "tasks/net6.0/ppbtTelemetryRecorder/bt-uploader/pacTelemetryUpload.runtimeconfig.json",
+        "tasks/net6.0/ppbtTelemetryRecorder/ppbtTelemetryRecorder.deps.json",
+        "tasks/net6.0/ppbtTelemetryRecorder/ppbtTelemetryRecorder.dll",
+        "tasks/net6.0/ppbtTelemetryRecorder/ppbtTelemetryRecorder.dll.config",
+        "tasks/net6.0/ppbtTelemetryRecorder/ppbtTelemetryRecorder.pdb",
+        "tasks/net6.0/ppbtTelemetryRecorder/ppbtTelemetryRecorder.runtimeconfig.json",
+        "tasks/net6.0/ppbtTelemetryRecorder/runtimes/browser/lib/net6.0/System.Text.Encodings.Web.dll",
+        "tasks/net6.0/runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll",
+        "tasks/net6.0/runtimes/win/lib/netcoreapp3.0/Microsoft.Win32.SystemEvents.dll",
+        "tasks/net6.0/runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll"
       ]
     }
   },
@@ -61,35 +126,43 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ivanf\\.nuget\\packages\\": {}
+    "C:\\Users\\s.agostini\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ivanf\\Source\\Repos\\PCFCarouselControl\\PCFCarouselControl.pcfproj",
+      "projectUniqueName": "C:\\SW\\Github\\PCF-Carousel-Control-fork\\PCFCarouselControl.pcfproj",
       "projectName": "PCFCarouselControl",
-      "projectPath": "C:\\Users\\ivanf\\Source\\Repos\\PCFCarouselControl\\PCFCarouselControl.pcfproj",
-      "packagesPath": "C:\\Users\\ivanf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ivanf\\Source\\Repos\\PCFCarouselControl\\obj\\",
+      "projectPath": "C:\\SW\\Github\\PCF-Carousel-Control-fork\\PCFCarouselControl.pcfproj",
+      "packagesPath": "C:\\Users\\s.agostini\\.nuget\\packages\\",
+      "outputPath": "C:\\SW\\Github\\PCF-Carousel-Control-fork\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\ivanf\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\s.agostini\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net462"
       ],
       "sources": {
-        "https://www.nuget.org/api/v2/": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://pkgs.dev.azure.com/cludit/cludit-nuget/_packaging/public/nuget/v3/index.json": {}
       },
       "frameworks": {
         "net462": {
+          "targetAlias": "net462",
           "projectReferences": {}
         }
       }
     },
     "frameworks": {
       "net462": {
+        "targetAlias": "net462",
         "dependencies": {
           "Microsoft.PowerApps.MSBuild.Pcf": {
             "target": "Package",
